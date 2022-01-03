@@ -1,28 +1,33 @@
 {
   "name": "calculator",
   "version": "1.0.0",
-  "main": "main.js",
+  "main": "app/main.js",
   "scripts": {
-    "start": "NODE_ENV=dev electron ."
+    "start": "NODE_ENV=dev electron .",
+    "build-osx": "electron-packager .  --out ./dist --platform darwin --overwrite --ignore='python'"
   },
   "license": "MIT",
   "devDependencies": {
-    "electron": "^16.0.5"
+    "electron": "^16.0.5",
+    "electron-packager": "^15.4.0"
   },
   "dependencies": {
     "child_process": "^1.0.2",
     "request": "^2.88.2",
     "request-promise": "^4.2.6"
   },
-  "build": {
+  "build_ex": {
     "appId": "com.strong.readit",
     "copyright": "Copyright Strong",
-    "extraFiles": [
-      "python/dist"
+    "extraResources": [
+      "/python/dist/**"
     ],
     "mac": {
       "category": "public.app-category.productivity",
-      "target": "zip"
+      "target": "zip",
+      "extraResources": [
+        "/python/dist/**"
+      ]
     },
     "win": {
       "target": "zip"
